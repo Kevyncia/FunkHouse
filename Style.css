@@ -1,0 +1,82 @@
+body {
+	background: lightblue;
+}
+
+body 
+{
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(141deg, #E6D0CB 20%, #E77078 190%);
+}
+
+@font-face {
+
+	font-family: 'funkhouse';
+	src:  url('fonts/funkhouse.woff') format('woff');
+    font-weight: normal;                                 
+    font-style: normal;
+}
+    
+
+#TITLE
+{
+	font-family: 'funkhouse';
+	font-size: 100px;
+	line-height: 1.6;
+	float: middle;
+	margin: 20px;
+	font-kerning: 
+
+	 }
+	 #TheBratzFont
+	{width: 350px;
+	align-items: center;
+	margin: 20px;}
+
+#container { 
+	position: absolute;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+}
+
+#TheBratzFont2 {
+	transition: opacity 0.5s ease-in-out;
+	opacity: 1;
+
+}
+#TheBratzFont2:hover {
+	
+	opacity: 0;
+
+}
+
+
+#FunkHouse {
+	top: 0%;
+	left: 0%;
+	position: fixed;
+	z-index: -1;
+	opacity: 1;
+	transition: opacity 2s ease-in-out;
+	
+}
+
+#FunkHouse:hover {
+	opacity: 0;
+}
+	
+	
+
+
+#p1
+{
+	font-family: 'funkhouse';
+	font-size: 200px;
+	line-height: 1.6;
+	float: middle;
+	margin: 20px;
+	font-kerning: 
+
+}
+
+
