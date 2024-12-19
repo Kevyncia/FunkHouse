@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="Introstyle.css">
+	<title>custom font</title>
+
+</head>
+<body> 
+<div id="container">
+	<img src="image/Flicker.png" id="base-image"> 
+	<img  src="image/overlay5.png" id="overlay-image"> 
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .profile-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        gap: 20px;
+        z-index: 1003;
+    }
+
+    .profile-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .profile-icon {
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 50%;
+    }
+
+    .profile-icon:hover {
+        transform: scale(1.1);
+    }
+
+    .profile-name {
+        font-family: 'Bratz-font-kh', sans-serif;
+        color: #c52d8b;
+        font-size: 18px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .profile-item.selected .profile-icon {
+        position: absolute;
+        top: -185px;
+        left: 8%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 70px;
+    }
+
+    .profile-item.selected .profile-name {
+        position: absolute;
+        top: -109px;
+        left: 8%;
+        transform: translateX(-50%);
+        font-size: 16px;
+    }
+
+    .profile-item.hidden {
+        display: none;
+    }
+
+    .white-screen.purple {
+        background-color: #ff96dc;
+    }
+
+    .white-screen.green {
+        background-color: #ff9eba;
+    }
+
+    .white-screen.blue {
+        background-color: #cee5fd;
+    }
+
+    .white-screen.orange {
+        background-color: #ff9650;
+    }
+
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        background: transparent;
+        color: #c52d8b;
+        border: none;
+        cursor: pointer;
+        font-family: 'Bratz-font-kh', sans-serif;
+        font-size: 36px;
+        display: none;
+        z-index: 1003;
+        transition: transform 0.3s ease;
+    }
+
+    .back-button:hover {
+        transform: scale(1.1);
+    }
+
+    .back-button.visible {
+        display: block;
+    }
+
+    .close-button2.hidden {
+        display: none;
+    }
+
+    .date-display.profile-selected {
+        top: 250px;
+        font-size: 22px;
+        left: 50%;
+    }
+
+    .digital-clock.profile-selected {
+        top: 250px;
+        left: 67%;
+        font-size: 22px;
+    }
+
+    .brand-images {
+        position: absolute;
+        bottom: 20px;
+        left: 48%;
+        transform: translateX(-50%);
+        display: none;
+        z-index: 1003;
+        width: 300px;
+        height: 300px;
+    }
+
+    .brand-images.visible {
+        display: block;
+    }
+
+    .brand-image {
+        position: absolute;
+        left: 55%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        transition: opacity 0.5s ease-in-out;
+    }
+	
+    #fh-image {
+        opacity: 0;
+    }
+
+    #bratz-font-image {
+        opacity: 1;
+    }
+
+    .brand-images.hover-once #fh-image {
+        opacity: 1;
+    }
+
+    .brand-images.hover-once #bratz-font-image {
+        opacity: 0;
+    }
+
+    .brand-images.hover-twice #fh-image,
+    .brand-images.hover-twice #bratz-font-image {
+        opacity: 0;
+    }
+</style>
+
+<script>
+    window.addEventListener('load', function() {
+        const whiteScreen = document.querySelector('.white-screen');
+        const closeButton = document.querySelector('.close-button2');
+        const dateDisplay = document.querySelector('.date-display');
+        const digitalClock = document.querySelector('.digital-clock');
+        
+        const profileContainer = document.createElement('div');
+        profileContainer.className = 'profile-container';
+        whiteScreen.appendChild(profileContainer);
+
+        const backButton = document.createElement('button');
+        backButton.className = 'back-button';
+        backButton.textContent = '<';
+        whiteScreen.appendChild(backButton);
+
+        const brandImages = document.createElement('div');
+        brandImages.className = 'brand-images';
+        
+        const fhImage = document.createElement('img');
+        fhImage.src = 'image/fh.png';
+        fhImage.className = 'brand-image';
+        fhImage.id = 'fh-image';
+        
+        const bratzFontImage = document.createElement('img');
+        bratzFontImage.src = 'image/thebratzfont2.png';
+        bratzFontImage.className = 'brand-image';
+        bratzFontImage.id = 'bratz-font-image';
+        
+        brandImages.appendChild(fhImage);
+        brandImages.appendChild(bratzFontImage);
+        whiteScreen.appendChild(brandImages);
+
+        let hoverCount = 0;
+        brandImages.addEventListener('mouseenter', function() {
+            hoverCount++;
+            if(hoverCount === 1) {
+                brandImages.classList.add('hover-once');
+                brandImages.classList.remove('hover-twice');
+            } else if(hoverCount === 2) {
+                brandImages.classList.remove('hover-once');
+                brandImages.classList.add('hover-twice');
+            }
+        });
+
+        const createProfileItem = (src, name, alt) => {
+            const div = document.createElement('div');
+            div.className = 'profile-item';
+            
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = alt;
+            img.className = 'profile-icon';
+            
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'profile-name';
+            nameDiv.textContent = name;
+            
+            div.appendChild(img);
+            div.appendChild(nameDiv);
+            return div;
+        };
+
+        const profiles = [
+            {src: 'image/YasminProfile.png', name: 'Yasmin', alt: 'Yasmin Profile', color: 'purple'},
+            {src: 'image/JadeProfile.png', name: 'Jade', alt: 'Jade Profile', color: 'green'},
+            {src: 'image/CloeProfile.png', name: 'Cloe', alt: 'Cloe Profile', color: 'blue'},
+            {src: 'image/SashaProfile.png', name: 'Sasha', alt: 'Sasha Profile', color: 'orange'}
+        ];
+
+        const profileElements = profiles.map(profile => {
+            const item = createProfileItem(profile.src, profile.name, profile.alt);
+            profileContainer.appendChild(item);
+            return item;
+        });
+
+        profileElements.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                whiteScreen.classList.remove('purple', 'green', 'blue', 'orange');
+                whiteScreen.classList.add(profiles[index].color);
+
+                profileElements.forEach(profile => {
+                    if (profile !== item) {
+                        profile.classList.add('hidden');
+                    }
+                });
+
+                item.classList.add('selected');
+                backButton.classList.add('visible');
+                closeButton.classList.add('hidden');
+                dateDisplay.classList.add('profile-selected');
+                digitalClock.classList.add('profile-selected');
+                brandImages.classList.add('visible');
+                hoverCount = 0;
+                brandImages.classList.remove('hover-once', 'hover-twice');
+            });
+        });
+
+        backButton.addEventListener('click', function() {
+            resetProfiles();
+        });
+
+        closeButton.addEventListener('click', function() {
+            resetProfiles();
+        });
+
+        function resetProfiles() {
+            profileElements.forEach(profile => {
+                profile.classList.remove('hidden', 'selected');
+            });
+            whiteScreen.classList.remove('purple', 'green', 'blue', 'orange');
+            backButton.classList.remove('visible');
+            closeButton.classList.remove('hidden');
+            dateDisplay.classList.remove('profile-selected');
+            digitalClock.classList.remove('profile-selected');
+            brandImages.classList.remove('visible', 'hover-once', 'hover-twice');
+            hoverCount = 0;
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+<style>
+	
+    
+    @font-face {
+        font-family: 'Bratz-font-kh';
+        src: url('fonts/Bratz-font-kh.ttf') format('truetype');
+    }
+
+    .popup-screen2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.09);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .popup-content2 {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: px;
+        margin: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 5px;
+        animation: popIn 0.3s ease-out;
+    }
+
+    .close-button2 {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 36px;
+        cursor: pointer;
+        color: #c52d8b;
+        z-index: 1002;
+        background-color: transparent;
+        border: none;
+        padding: 10px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-family: 'Bratz-font-kh', sans-serif;
+    }
+
+    .close-button2:hover {
+        color: #ff69b4;
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    .pink-rectangle {
+        position: absolute;
+        width: 1000px;
+        height: 700px;
+        background-color: #93456B;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        z-index: 1000;
+        border-width: 50px 30px 30px 30px;
+        border-style: solid;
+        border-color: #F17FB1;
+        box-sizing: border-box;
+    }
+
+    .black-circle {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: black;
+        border-radius: 50%;
+        top: -30px;  /* Changed from 2px to -10px to move circle up */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+    }
+
+
+    .white-screen {
+        position: absolute;
+        width: 600px;
+        height: 400px;
+        background-color: #feabd3;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        z-index: 1001;
+    }
+
+    .profile-container {
+        position: absolute;
+        display: flex;
+        justify-content: space-around;
+        width: 500px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1002;
+    }
+
+    .profile-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .profile-image:hover {
+        transform: scale(1.1);
+    }
+
+    .character-name {
+        font-family: 'Bratz-font-kh', sans-serif;
+        color: #c52d8b;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .digital-clock {
+        position: absolute;
+        top: 285px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Bratz-font-kh', sans-serif;
+        font-size: 45px;
+        color: #c52d8b;
+        z-index: 1002;
+        text-shadow: 0 0 10px rgba(197, 45, 139, 0.5);
+    }
+
+    .date-display {
+        position: absolute;
+        top: 255px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Bratz-font-kh', sans-serif;
+        font-size: 28px;
+        color: #c52d8b;
+        z-index: 1002;
+        text-shadow: 0 0 10px rgba(197, 45, 139, 0.5);
+    }
+</style>
+
+<div class="popup-screen2" id="popupScreen2">
+    <div class="popup-content2">
+        <div class="pink-rectangle">
+            <div class="black-circle"></div>
+        </div>
+        <div class="white-screen">
+            <span class="close-button2" onclick="closePopup2()">x</span>
+        </div>
+        <div class="date-display" id="date"></div>
+        <div class="digital-clock" id="clock"></div>
+        <div class="profile-container">
+           
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPopup2() {
+        document.getElementById('popupScreen2').style.display = 'flex';
+    }
+
+    function closePopup2() {
+        document.getElementById('popupScreen2').style.display = 'none';
+    }
+
+    function updateClock() {
+        const now = new Date();
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        
+        const timeString = `${hours}:${minutes}`;
+        document.getElementById('clock').textContent = timeString;
+
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const month = months[now.getMonth()];
+        const date = now.getDate();
+        const year = now.getFullYear();
+        
+        const dateString = `${month} ${date}, ${year}`;
+        document.getElementById('date').textContent = dateString;
+    }
+
+    window.addEventListener('load', function() {
+        const cpIcon = document.getElementById('cp-icon');
+        const cpiIcon = document.getElementById('cpi-icon');
+        
+        cpIcon.style.cursor = 'pointer';
+        cpiIcon.style.cursor = 'pointer';
+        
+        cpIcon.onclick = function(e) {
+            e.preventDefault();
+            showPopup2();
+        };
+        
+        cpiIcon.onclick = function(e) {
+            e.preventDefault();
+            showPopup2();
+        };
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    });
+</script>
+
+
+
+
+
+
+<style>
+    #cp-icon {
+        position: absolute;
+        right: 925px;
+        bottom: 30px;
+        max-width: 120px;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 1;
+        z-index: 2;
+    }
+
+    #cp-icon:hover {
+        opacity: 0;
+    }
+
+    #cp-icon:hover + #cpi-icon {
+        opacity: 1;
+    }
+
+    #cpi-icon {
+        position: absolute;
+        right: 925px;
+        bottom: 30px;
+        max-width: 120px;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+        z-index: 1;
+    }
+</style>
+
+
+
+
+
+<img id="cp-icon" src="image/CPC.png" alt="CP Icon">
+
+
+<img id="cpi-icon" src="image/CPicon.png" alt="CPI Icon"> 
+
+
+
+
+
+
+
+</style>
+
+<div class="popup-screen" id="popupScreen">
+<div class="popup-content">
+    <span class="close-button" onclick="closePopup()">&times;</span>
+    <!-- Add your popup content here -->
+</div>
+</div>
+    
+
+	
+
+
+	<audio id="audio" autoplay>
+	<source src="bratz_theme_song.mp3" type="audio/mpeg">
+
+
+	<p id="paragraph2">Funk House was crested in by Induustries. </p>
+
+
+
+</body>
+</html>
