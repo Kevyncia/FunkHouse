@@ -1,29 +1,1830 @@
 <!DOCTYPE html>
+<style>
+    
+
+</style>
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="Introstyle.css">
-	<title>custom font</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" href="Introstyle.css">
+    <link rel="icon" type="image/png" href="image/Lips.png">
+    <title>BRATZ💫</title>
+	
+	
+</head> 
 
-</head>
-<body> 
-<div id="container">
-	<img src="image/Flicker.png" id="base-image"> 
-	<img  src="image/overlay5.png" id="overlay-image"> 
 
+
+
+<style>
+    .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -2; /* Background layer */
+        opacity: 0;
+        animation: fadeInStars 6s ease-in forwards;
+    }
+
+    .star {
+        position: absolute;
+        background-color: white;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        animation: twinkle 1s infinite alternate;
+    }
+
+    .star-layer-2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1; /* Middle layer */
+        opacity: 0;
+        animation: fadeInStars 6s ease-in forwards;
+    }
+
+    @keyframes twinkle {
+        from {
+            opacity: 0.2;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+    }
+
+    @keyframes fadeInStars {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="stars" id="starsContainer"></div>
+<div class="star-layer-2" id="starsContainer2"></div>
+
+<script>
+    function createStars() {
+        const container = document.getElementById('starsContainer');
+        const container2 = document.getElementById('starsContainer2');
+        const numberOfStars = 200; // Increased from 100
+        const numberOfStarsLayer2 = 150; // Additional stars in second layer
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            container.appendChild(star);
+        }
+
+        for (let i = 0; i < numberOfStarsLayer2; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            container2.appendChild(star);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', createStars);
+</script>
+
+
+
+
+
+
+ 
+<div class="black-overlay"></div>
+
+<style>
+.black-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 3;
+    pointer-events: none;
+    animation: fadeOutOverlay 2s ease-out forwards;
+}
+
+.micion-image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    max-width: 100%;
+    height: auto;
+}
+
+@keyframes fadeOutOverlay {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+#container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+
+
+
+
+
+
+<div class="frame-container">
+    <img src="image/frame8.png" alt="Frame 1">
 </div>
 
+<style>
+
+.title-text {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bratz-font-kh';
+    font-size: 40px;
+    color: #f4f989;
+    text-align: center;
+    kerning: 20px;
+    z-index: 1000;
+    text-shadow: 0 0 3px #F2EE9A,
+                 0 0 6px #F2EE9A,
+                 0 0 9px #F2EE9A,
+                 0 0 12px rgba(242, 238, 154, 0.8);
+    animation: glow 2s ease-in-out infinite alternate,
+               fadeIn 1s ease-in forwards;
+    opacity: 0;
+    animation-delay: 6.5s; /* Matches the spotlight animation delay */
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 3px #F2EE9A,
+                     0 0 6px #F2EE9A,
+                     0 0 9px #F2EE9A,
+                     0 0 12px rgba(242, 238, 154, 0.8);
+    }
+    to {
+        text-shadow: 0 0 6px #F2EE9A,
+                     0 0 12px #F2EE9A,
+                     0 0 18px #F2EE9A,
+                     0 0 24px rgba(242, 238, 154, 0.8);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.title-text.fade-out {
+    animation: fadeOut 1s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+ .character-menu {
+        opacity: 0;
+        transition: opacity 1s ease-in;
+        pointer-events: none;
+    }
+
+    .character-menu.fade-in {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const titleText = document.querySelector('.title-text');
+        const characterMenu = document.querySelector('.character-menu');
+        let hasHovered = false;
+
+        titleText.addEventListener('mouseover', function() {
+            if (!hasHovered) {
+                titleText.classList.add('fade-out');
+                // Wait for title to fade out before fading in menu
+                setTimeout(() => {
+                    characterMenu.classList.add('fade-in');
+                }, 1000);
+                hasHovered = true;
+            }
+        });
+    });
+</script>
+
+
+<div class="title-text">
+    Select Your<br>
+    Brat
+</div>
+
+<
+
+<div class="speakersR-container">
+    <img src="image/speakerR.png" alt="Right Speaker">
+</div>
+
+
+
+<div class="speakers-container">
+    <img src="image/speakerL.png" alt="Speakers">
+</div>
+
+
+
+
+<div class="spotlight-container">
+    <img src="image/Spotlight2.png" alt="Spotlight">
+</div>
+
+
+
+
+
+
+
+<body> 
+<div id="container" >
+	<div style="position: relative;">
+		<img src="image/Flicker.png" id="base-image" style="position: absolute; top: 0; left: 0;"> 
+		<img src="image/overlay5.png" id="overlay-image">
+	</div>
+    
+</div>
+
+
+
+
+<style>
+.stage-container {
+    position: fixed;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%; /* Reduced from 100% */
+    max-width: 300px; /* Reduced from 1200px */
+    z-index: 1;
+}
+
+.stage-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+</style>
+
+
+<div class="stage-container">
+    <img src="image/stage.png" alt="Stage">
+</div>
+    <style>
+        @font-face {
+            font-family: 'bratz-font-kh';
+            src: url('fonts/bratz-font-kh.ttf') format('truetype');
+        }
+        @keyframes scrollUp {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .popup-lyrics {
+            animation: scrollUp 8s ease-out;
+            margin-right: -100px;
+            padding-right: 100px;
+            position: relative;
+            right: -150px;
+        }
+
+
+
+
+        .popup-lyrics {
+            font-family: 'bratz-font-kh';
+            color: #f2ee9a;
+            font-size: 25px;
+            line-height: 1.3;
+            text-align: center;
+            margin-top: 180px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            
+        }
+
+        .lyrics-line {
+            position: relative;
+            margin: 5px 0;
+        }
+
+        .word {
+            display: inline-block;
+            margin: 0 4px;
+            color: #f2ee9a;
+            transition: color 0.3s ease;
+        }
+
+        .highlighted {
+            color: #ff69b4;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const lyrics = [
+            
+                "Everybody now (ooh)",
+                "Time to show the whole world",
+                "What we're all about",
+                "We're the girls with a passion for fashion",
+                "Ooh Bratz, we'll always be there for eachother",
+                "Ooh Bratz (yeah) Stylin' how we feel (ooh)",
+                "Talkin' about best friends (yeah)",
+                "Together we can do anything (oh)",
+                "Gotta plan the dream, take a chance to believe",
+                "Make it real",
+                "B B Bratz",
+        
+            ];
+
+            const popupContent = document.querySelector('.popup-content');
+            const lyricsDiv = document.createElement('div');
+            lyricsDiv.className = 'popup-lyrics';
+
+            lyrics.forEach((line, lineIndex) => {
+                const lineDiv = document.createElement('div');
+                lineDiv.className = 'lyrics-line';
+                
+                // Split line into words and create spans
+                const words = line.split(' ').map(word => {
+                    const span = document.createElement('span');
+                    span.className = 'word';
+                    span.textContent = word;
+                    return span;
+                });
+                
+                // Add all word spans to the line div
+                words.forEach(span => lineDiv.appendChild(span));
+                lyricsDiv.appendChild(lineDiv);
+
+                // Animate each word sequentially
+                setTimeout(() => {
+                    words.forEach((wordSpan, wordIndex) => {
+                        setTimeout(() => {
+                            wordSpan.classList.add('highlighted');
+                        }, wordIndex * 400); // 400ms delay between each word
+                    });
+                }, lineIndex * 3000); // 3000ms delay between each line
+            });
+
+            popupContent.appendChild(lyricsDiv);
+        });
+    </script>
+
+
+
+
+
+
+    <style>
+        .character-menu {
+            position: fixed;
+            top: calc(55% + 14px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .character-slider {
+            display: flex;
+            width: 300px;  
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+
+        .character-option {
+            min-width: 100%;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+
+        .character-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: filter 0.3s ease;
+        }
+
+        .character-option img:hover {
+            filter: drop-shadow(0 0 2px #f2ee9a) 
+                   drop-shadow(0 0 3px #f2ee9a);
+        }
+
+        .slider-button {
+            background: transparent;
+            color: #f2ee9a;
+            border: none;
+            cursor: pointer;
+            margin: 0 20px;
+            font-size: 48px;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .slider-button:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 20px #f2ee9a, 
+                         0 0 30px #f2ee9a,
+                         0 0 40px #f2ee9a;
+            color: #f2ee9a;
+        }
+
+        .slider-button:active {
+            transform: scale(0.95);
+            text-shadow: 0 0 30px #f2ee9a,
+                         0 0 40px #f2ee9a,
+                         0 0 50px #f2ee9a,
+                         0 0 60px #f2ee9a;
+            color: #f2ee9a;
+        }
+
+        .prev::after {
+            content: '⟡';
+            transform: rotate(90deg);
+            display: block;
+        }
+
+        .next::after {
+            content: '⟡';
+            transform: rotate(-90deg);
+            display: block;
+        }
+
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 20px #f2ee9a; }
+            50% { text-shadow: 0 0 40px #f2ee9a; }
+            100% { text-shadow: 0 0 20px #f2ee9a; }
+        }
+
+        .slider-button.clicked {
+            animation: glowPulse 0.5s ease;
+        }
+    </style>
+
+    <div class="character-menu">
+        <button class="slider-button prev"></button>
+        <div class="character-slider">
+            <div class="character-container">
+                <!-- Original slides -->
+                <div class="character-option">
+                    <img src="image/yasmin.png" alt="Yasmin">
+                </div>
+                <div class="character-option">
+                    <img src="image/jade.png" alt="Jade">
+                </div>
+                <div class="character-option">
+                    <img src="image/cloe.png" alt="Cloe">
+                </div>
+                <div class="character-option">
+                    <img src="image/sasha.png" alt="Sasha">
+                </div>
+                <!-- Cloned slides for infinite loop -->
+                <div class="character-option">
+                    <img src="image/yasmin.png" alt="Yasmin">
+                </div>
+                <div class="character-option">
+                    <img src="image/jade.png" alt="Jade">
+                </div>
+                <div class="character-option">
+                    <img src="image/cloe.png" alt="Cloe">
+                </div>
+                <div class="character-option">
+                    <img src="image/sasha.png" alt="Sasha">
+                </div>
+            </div>
+        </div>
+        <button class="slider-button next"></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.character-container');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const slideWidth = 100;
+            const totalSlides = document.querySelectorAll('.character-option').length / 2;
+            let currentIndex = 0;
+
+            function updateSlide(smooth = true) {
+                if (!smooth) {
+                    container.style.transition = 'none';
+                } else {
+                    container.style.transition = 'transform 0.5s ease';
+                }
+                container.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            }
+
+            function handleTransitionEnd() {
+                if (currentIndex >= totalSlides) {
+                    currentIndex = 0;
+                    updateSlide(false);
+                }
+                if (currentIndex < 0) {
+                    currentIndex = totalSlides - 1;
+                    updateSlide(false);
+                }
+            }
+
+            function addClickAnimation(button) {
+                button.classList.add('clicked');
+                setTimeout(() => {
+                    button.classList.remove('clicked');
+                }, 500);
+            }
+
+            container.addEventListener('transitionend', handleTransitionEnd);
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex--;
+                updateSlide();
+                addClickAnimation(prevBtn);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex++;
+                updateSlide();
+                addClickAnimation(nextBtn);
+            });
+
+            updateSlide();
+        });
+    </script>
+
+
+
+
+
+
+<style>
+
+
+
+        /* Add any necessary styles here */
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popupContent = document.querySelector('.popup-content');
+            const singAlongImage = document.createElement('img');
+            singAlongImage.src = 'image/SingAlong.png';
+            singAlongImage.alt = 'Sing Along';
+            singAlongImage.className = 'sing-along-image';
+            singAlongImage.style.position = 'absolute';
+            singAlongImage.style.left = '60%';
+            singAlongImage.style.transform = 'translateX(-50%)';
+            singAlongImage.style.zIndex = '2';
+            singAlongImage.style.width = '50%';
+            popupContent.appendChild(singAlongImage);
+        });
+    </script>
+
+
+    <style>
+        .sing-along-image {
+            animation: slideDown 1s ease forwards;
+            opacity: 0;
+            top: -100px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                top: -100px;
+            }
+            to {
+                opacity: 1;
+                top: 100px;
+            }
+        }
+    </style>
+
+
+    <style>
+        .play-button {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 25px solid transparent;
+            border-bottom: 25px solid transparent;
+            border-left: 40px solid #f29acf;
+            left: 17%;
+            top: 545px;
+            transform: rotate(0deg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .play-button:before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: -40px;
+            width: 0;
+            height: 0;
+            border-radius: 5px;
+            border-top: 25px solid transparent;
+            border-bottom: 25px solid transparent;
+            border-left: 40px solid #F17FB1;
+            transition: all 0.3s ease;
+        }
+
+        .play-button.active {
+            border-left-color: #f29aba;
+            box-shadow: inset 0 0 20px rgba(255, 158, 230, 0.8),
+                       inset 0 0 40px rgba(255, 158, 230, 0.4);
+        }
+
+        .play-button.active:before {
+            border-left-color: #ffbae5;
+            box-shadow: inset 0 0 20px rgba(251, 163, 205, 0.8),
+                       inset 0 0 40px rgba(255, 158, 215, 0.4);
+        }
+
+        .audio-menu-screen {
+            position: absolute;
+            left: 8.4%;
+            top: 238px;
+            z-index: 3;
+            background: #feabd3;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            width: 249px;
+            height: 108px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .audio-menu-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mp3-toggle {
+            position: absolute;
+            left: 24%;
+            top: 405px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            z-index: 4;
+            transition: transform 0.3s ease;
+        }
+
+        .mp3-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .control-button {
+            position: absolute;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            z-index: 4;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .control-button.rewind {
+            left: 10.5%;
+            top: 535px;
+        }
+
+        .control-button.forward {
+            left: 23%;
+            top: 535px;
+        }
+
+        .control-button.rewind::before,
+        .control-button.rewind::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-right: 15px solid #F17FB1;
+        }
+
+        .control-button.rewind::before {
+            right: 50%;
+        }
+
+        .control-button.rewind::after {
+            right: 25%;
+        }
+
+        .control-button.forward::before,
+        .control-button.forward::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 15px solid #F17FB1;
+        }
+
+        .control-button.forward::before {
+            left: 25%;
+        }
+
+        .control-button.forward::after {
+            left: 50%;
+        }
+
+        .song-display {
+            background: #feabd3;
+            color: #c52d8b;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: 'bratz-font-kh';
+            min-width: 150px;
+            text-align: center;
+            margin-bottom: 10px;
+            border: 2px solid #c52d8b;
+        }
+
+        .menu-title {
+            color: #c52d8b;
+            font-family: 'bratz-font-kh';
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popupContent = document.querySelector('.popup-content');
+            const playButton = document.createElement('div');
+            playButton.className = 'play-button';
+            
+            const audioMenuScreen = document.createElement('div');
+            audioMenuScreen.className = 'audio-menu-screen hidden';
+
+            const mp3Toggle = document.createElement('img');
+            mp3Toggle.src = 'image/mp3P.png';
+            mp3Toggle.className = 'mp3-toggle';
+            mp3Toggle.alt = 'Toggle Music Menu';
+
+            const menuTitle = document.createElement('div');
+            menuTitle.className = 'menu-title';
+            menuTitle.textContent = 'Music Selection';
+
+            const songs = [
+                { name: 'Original', file: 'bratz_theme_songOG.mp3' },
+                { name: 'Karaoke', file: 'Bratztheme2.mp3' }
+            ];
+
+            let currentSongIndex = 0;
+            let currentAudio = null;
+            let isPlaying = false;
+            let isMenuVisible = false;
+
+            const rewindBtn = document.createElement('button');
+            rewindBtn.className = 'control-button rewind';
+            rewindBtn.setAttribute('aria-label', 'Previous song');
+
+            const songDisplay = document.createElement('div');
+            songDisplay.className = 'song-display';
+            
+            const forwardBtn = document.createElement('button');
+            forwardBtn.className = 'control-button forward';
+            forwardBtn.setAttribute('aria-label', 'Next song');
+
+            audioMenuScreen.appendChild(menuTitle);
+            audioMenuScreen.appendChild(songDisplay);
+
+            mp3Toggle.addEventListener('click', function() {
+                isMenuVisible = !isMenuVisible;
+                audioMenuScreen.classList.toggle('hidden');
+            });
+
+            function updateSongDisplay() {
+                songDisplay.textContent = songs[currentSongIndex].name;
+            }
+
+            function playCurrentSong() {
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+                currentAudio = new Audio(songs[currentSongIndex].file);
+                currentAudio.play();
+                isPlaying = true;
+                playButton.classList.add('active');
+                updateSongDisplay();
+            }
+
+            rewindBtn.addEventListener('click', function() {
+                currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+                if (isPlaying) {
+                    playCurrentSong();
+                } else {
+                    updateSongDisplay();
+                }
+            });
+
+            forwardBtn.addEventListener('click', function() {
+                currentSongIndex = (currentSongIndex + 1) % songs.length;
+                if (isPlaying) {
+                    playCurrentSong();
+                } else {
+                    updateSongDisplay();
+                }
+            });
+            
+            playButton.addEventListener('click', function() {
+                if (!currentAudio || currentAudio.paused) {
+                    playCurrentSong();
+                } else {
+                    currentAudio.pause();
+                    isPlaying = false;
+                    this.classList.remove('active');
+                }
+            });
+            
+            updateSongDisplay();
+            popupContent.appendChild(playButton);
+            popupContent.appendChild(mp3Toggle);
+            popupContent.appendChild(audioMenuScreen);
+            popupContent.appendChild(rewindBtn);
+            popupContent.appendChild(forwardBtn);
+        });
+    </script>
+
+    
+
+
+
+    <style>
+        #popout img {
+            transition: filter 0.3s ease;
+        }
+
+        #popout img:hover {
+            filter: drop-shadow(0 0 15px #f2ee9a);
+        }
+
+        
+    </style>
+
+    <div class="popup-screen">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <!-- Add your popup content here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popout = document.getElementById('popout');
+            const popupScreen = document.querySelector('.popup-screen');
+            const closeButton = document.querySelector('.close-button');
+
+            popout.addEventListener('click', function() {
+                popupScreen.style.display = 'flex';
+            });
+
+            closeButton.addEventListener('click', function() {
+                popupScreen.style.display = 'none';
+            });
+
+            // Close popup when clicking outside content
+            popupScreen.addEventListener('click', function(e) {
+                if (e.target === popupScreen) {
+                    popupScreen.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+
+
+    <style>
+        .popup-content img.mp3-left {
+            position: absolute;
+            left: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 25%;
+            height: auto;
+            margin: 0;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popupContent = document.querySelector('.popup-content');
+            const mp3Image = document.createElement('img');
+            mp3Image.src = "image/mp3.png";
+            mp3Image.alt = "MP3 Player";
+            mp3Image.className = "mp3-left";
+            popupContent.appendChild(mp3Image);
+        });
+    </script>
+
+    
+
+
+    <div id="popout" >
+        <img width="80px" height="auto" src="image/MICICON.png" alt="Microphone Icon">
+    </div>
+    
+<style>
+    .popup-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.09);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .popup-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: px; /* Matching the frame container max-width */
+        margin: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 5px;
+        animation: popIn 0.3s ease-out;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 60px;
+        right: 80px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #c52d8b;
+    }
+
+    @keyframes popIn {
+        from {
+            transform: scale(0.3);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="popup-screen" id="popupScreen">
+    <div class="popup-content">
+        <span class="close-button" onclick="closePopup()">&times;</span>
+        <!-- Add your popup content here -->
+    </div>
+</div>
+
+<script>
+    function showPopup() {
+        document.getElementById('popupScreen').style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('popupScreen').style.display = 'none';
+    }
+
+    // Update the microphone icon link to trigger popup
+    window.onload = function() {
+        const micLink = document.querySelector('div[style*="bottom: 40px"] a');
+        micLink.href = 'javascript:void(0)';
+        micLink.onclick = function(e) {
+            e.preventDefault();
+            showPopup();
+        };
+    };
+</script>
+
+	<script>
+		document.getElementById('audio1').addEventListener('ended', function() {
+			const audio2 = document.getElementById('audio2');
+			audio2.loop = true;
+			audio2.play();
+		});
+	</script>  
+
+
+<style>
+    .profile-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        gap: 20px;
+        z-index: 1003;
+    }
+
+    .profile-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .profile-icon {
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 50%;
+    }
+
+    .profile-icon:hover {
+        transform: scale(1.1);
+    }
+
+    .profile-name {
+        font-family: 'Bratz-font-kh', sans-serif;
+        color: #c52d8b;
+        font-size: 18px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .profile-item.selected .profile-icon {
+        position: absolute;
+        top: -185px;
+        left: 8%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 70px;
+    }
+
+    .profile-item.selected .profile-name {
+        position: absolute;
+        top: -109px;
+        left: 8%;
+        transform: translateX(-50%);
+        font-size: 16px;
+    }
+
+    .profile-item.hidden {
+        display: none;
+    }
+
+    .white-screen.purple {
+        background-color: #ff96dc;
+    }
+
+    .white-screen.green {
+        background-color: #ff9eba;
+    }
+
+    .white-screen.blue {
+        background-color: #cee5fd;
+    }
+
+    .white-screen.orange {
+        background-color: #ff9650;
+    }
+
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        background: transparent;
+        color: #c52d8b;
+        border: none;
+        cursor: pointer;
+        font-family: 'Bratz-font-kh', sans-serif;
+        font-size: 36px;
+        display: none;
+        z-index: 1003;
+        transition: transform 0.3s ease;
+    }
+
+    .back-button:hover {
+        transform: scale(1.1);
+    }
+
+    .back-button.visible {
+        display: block;
+    }
+
+    .close-button2.hidden {
+        display: none;
+    }
+
+    .date-display.profile-selected {
+        top: 250px;
+        font-size: 22px;
+        left: 50%;
+    }
+
+    .digital-clock.profile-selected {
+        top: 250px;
+        left: 67%;
+        font-size: 22px;
+    }
+
+    .brand-images {
+        position: absolute;
+        bottom: 20px;
+        left: 48%;
+        transform: translateX(-50%);
+        display: none;
+        z-index: 1003;
+        width: 300px;
+        height: 300px;
+    }
+
+    .brand-images.visible {
+        display: block;
+    }
+
+    .brand-image {
+        position: absolute;
+        left: 55%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        transition: opacity 0.5s ease-in-out;
+    }
 	
+    #fh-image {
+        opacity: 0;
+    }
+
+    #bratz-font-image {
+        opacity: 1;
+    }
+
+    .brand-images.hover-once #fh-image {
+        opacity: 1;
+    }
+
+    .brand-images.hover-once #bratz-font-image {
+        opacity: 0;
+    }
+
+    .brand-images.hover-twice #fh-image,
+    .brand-images.hover-twice #bratz-font-image {
+        opacity: 0;
+    }
+</style>
+
+<script>
+    window.addEventListener('load', function() {
+        const whiteScreen = document.querySelector('.white-screen');
+        const closeButton = document.querySelector('.close-button2');
+        const dateDisplay = document.querySelector('.date-display');
+        const digitalClock = document.querySelector('.digital-clock');
+        
+        const profileContainer = document.createElement('div');
+        profileContainer.className = 'profile-container';
+        whiteScreen.appendChild(profileContainer);
+
+        const backButton = document.createElement('button');
+        backButton.className = 'back-button';
+        backButton.textContent = '<';
+        whiteScreen.appendChild(backButton);
+
+        const brandImages = document.createElement('div');
+        brandImages.className = 'brand-images';
+        
+        const fhImage = document.createElement('img');
+        fhImage.src = 'image/fh.png';
+        fhImage.className = 'brand-image';
+        fhImage.id = 'fh-image';
+        
+        const bratzFontImage = document.createElement('img');
+        bratzFontImage.src = 'image/thebratzfont2.png';
+        bratzFontImage.className = 'brand-image';
+        bratzFontImage.id = 'bratz-font-image';
+        
+        brandImages.appendChild(fhImage);
+        brandImages.appendChild(bratzFontImage);
+        whiteScreen.appendChild(brandImages);
+
+        let hoverCount = 0;
+        brandImages.addEventListener('mouseenter', function() {
+            hoverCount++;
+            if(hoverCount === 1) {
+                brandImages.classList.add('hover-once');
+                brandImages.classList.remove('hover-twice');
+            } else if(hoverCount === 2) {
+                brandImages.classList.remove('hover-once');
+                brandImages.classList.add('hover-twice');
+            }
+        });
+
+        const createProfileItem = (src, name, alt) => {
+            const div = document.createElement('div');
+            div.className = 'profile-item';
+            
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = alt;
+            img.className = 'profile-icon';
+            
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'profile-name';
+            nameDiv.textContent = name;
+            
+            div.appendChild(img);
+            div.appendChild(nameDiv);
+            return div;
+        };
+
+        const profiles = [
+            {src: 'image/YasminProfile.png', name: 'Yasmin', alt: 'Yasmin Profile', color: 'purple'},
+            {src: 'image/JadeProfile.png', name: 'Jade', alt: 'Jade Profile', color: 'green'},
+            {src: 'image/CloeProfile.png', name: 'Cloe', alt: 'Cloe Profile', color: 'blue'},
+            {src: 'image/SashaProfile.png', name: 'Sasha', alt: 'Sasha Profile', color: 'orange'}
+        ];
+
+        const profileElements = profiles.map(profile => {
+            const item = createProfileItem(profile.src, profile.name, profile.alt);
+            profileContainer.appendChild(item);
+            return item;
+        });
+
+        profileElements.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                whiteScreen.classList.remove('purple', 'green', 'blue', 'orange');
+                whiteScreen.classList.add(profiles[index].color);
+
+                profileElements.forEach(profile => {
+                    if (profile !== item) {
+                        profile.classList.add('hidden');
+                    }
+                });
+
+                item.classList.add('selected');
+                backButton.classList.add('visible');
+                closeButton.classList.add('hidden');
+                dateDisplay.classList.add('profile-selected');
+                digitalClock.classList.add('profile-selected');
+                brandImages.classList.add('visible');
+                hoverCount = 0;
+                brandImages.classList.remove('hover-once', 'hover-twice');
+            });
+        });
+
+        backButton.addEventListener('click', function() {
+            resetProfiles();
+        });
+
+        closeButton.addEventListener('click', function() {
+            resetProfiles();
+        });
+
+        function resetProfiles() {
+            profileElements.forEach(profile => {
+                profile.classList.remove('hidden', 'selected');
+            });
+            whiteScreen.classList.remove('purple', 'green', 'blue', 'orange');
+            backButton.classList.remove('visible');
+            closeButton.classList.remove('hidden');
+            dateDisplay.classList.remove('profile-selected');
+            digitalClock.classList.remove('profile-selected');
+            brandImages.classList.remove('visible', 'hover-once', 'hover-twice');
+            hoverCount = 0;
+        }
+    });
+</script>
+
+<style>
+    #notes-icon {
+        position: absolute;
+        right: 775px;
+        bottom: 30px;
+        max-width: 90px;
+        transition: all 0.3s ease-in-out;
+        z-index: 2;
+        cursor: pointer;
+        transform-origin: center;
+        opacity: 1;
+    }
+
+    #notes-icon:hover {
+        transform: scale(1.2);
+    }
+
+    #notes-icon.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .notes-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+    }
+
+    .notes-frame {
+        width: 500px;
+        height: 400px;
+        background-color: #93456B;
+        border: 8px solid #F17FB1;
+        border-radius: 10px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0; /* Remove padding */
+    }
+
+    .notes-content {
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        background-color: #feabd3;
+        border: none;
+        border-radius: 5px;
+        padding: 15px;
+        padding-right: 45px;
+        font-family: 'Bratz-font-kh', sans-serif;
+        color: #c52d8b;
+        font-size: 16px;
+        resize: none;
+        position: relative;
+        margin: 0; /* Remove margin */
+        box-sizing: border-box; /* Include padding in width/height calculation */
+    }
+
+    .notes-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        color: #c52d8b;
+        font-family: 'Bratz-font-kh', sans-serif;
+        font-size: 36px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        line-height: 1;
+        z-index: 2;
+    }
+
+    .notes-close:hover {
+        color: #F17FB1;
+        transform: scale(1.1);
+    }
+</style>
+
+<img id="notes-icon" src="image/Notes.png" alt="Notes Icon">
+
+<div class="notes-popup" id="notesPopup">
+    <div class="notes-frame">
+        <textarea class="notes-content" placeholder="Write your notes here..."></textarea>
+        <button class="notes-close" onclick="toggleNotes()">x</button>
+    </div>
+</div>
+
+<script>
+    function toggleNotes() {
+        const popup = document.getElementById('notesPopup');
+        const icon = document.getElementById('notes-icon');
+        
+        if(popup.style.display === 'none' || popup.style.display === '') {
+            popup.style.display = 'block';
+            icon.classList.add('hidden');
+        } else {
+            popup.style.display = 'none';
+            icon.classList.remove('hidden');
+        }
+    }
+
+    document.getElementById('notes-icon').addEventListener('click', toggleNotes);
+</script>
 
 
-	<audio id="audio" autoplay>
-	<source src="bratz_theme_song.mp3" type="audio/mpeg">
 
 
-	<p id="paragraph2">Funk House was crested in by Induustries. </p>
+
+
+
+
+<style>
+	
+    
+    @font-face {
+        font-family: 'Bratz-font-kh';
+        src: url('fonts/Bratz-font-kh.ttf') format('truetype');
+    }
+
+    .popup-screen2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.09);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .popup-content2 {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: px;
+        margin: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 5px;
+        animation: popIn 0.3s ease-out;
+    }
+
+    .close-button2 {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 36px;
+        cursor: pointer;
+        color: #c52d8b;
+        z-index: 1002;
+        background-color: transparent;
+        border: none;
+        padding: 10px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-family: 'Bratz-font-kh', sans-serif;
+    }
+
+    .close-button2:hover {
+        color: #ff69b4;
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    .pink-rectangle {
+        position: absolute;
+        width: 1000px;
+        height: 700px;
+        background-color: #93456B;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        z-index: 1000;
+        border-width: 50px 30px 30px 30px;
+        border-style: solid;
+        border-color: #F17FB1;
+        box-sizing: border-box;
+    }
+
+    .black-circle {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: black;
+        border-radius: 50%;
+        top: -30px;  /* Changed from 2px to -10px to move circle up */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+    }
+
+
+    .white-screen {
+        position: absolute;
+        width: 600px;
+        height: 400px;
+        background-color: #feabd3;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        z-index: 1001;
+    }
+
+    .profile-container {
+        position: absolute;
+        display: flex;
+        justify-content: space-around;
+        width: 500px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1002;
+    }
+
+    .profile-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .profile-image:hover {
+        transform: scale(1.1);
+    }
+
+    .character-name {
+        font-family: 'Bratz-font-kh', sans-serif;
+        color: #c52d8b;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .digital-clock {
+        position: absolute;
+        top: 285px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Bratz-font-kh', sans-serif;
+        font-size: 45px;
+        color: #c52d8b;
+        z-index: 1002;
+        text-shadow: 0 0 10px rgba(197, 45, 139, 0.5);
+    }
+
+    .date-display {
+        position: absolute;
+        top: 255px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Bratz-font-kh', sans-serif;
+        font-size: 28px;
+        color: #c52d8b;
+        z-index: 1002;
+        text-shadow: 0 0 10px rgba(197, 45, 139, 0.5);
+    }
+</style>
+
+<div class="popup-screen2" id="popupScreen2">
+    <div class="popup-content2">
+        <div class="pink-rectangle">
+            <div class="black-circle"></div>
+        </div>
+        <div class="white-screen">
+            <span class="close-button2" onclick="closePopup2()">x</span>
+        </div>
+        <div class="date-display" id="date"></div>
+        <div class="digital-clock" id="clock"></div>
+        <div class="profile-container">
+           
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPopup2() {
+        document.getElementById('popupScreen2').style.display = 'flex';
+    }
+
+    function closePopup2() {
+        document.getElementById('popupScreen2').style.display = 'none';
+    }
+
+    function updateClock() {
+        const now = new Date();
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        
+        const timeString = `${hours}:${minutes}`;
+        document.getElementById('clock').textContent = timeString;
+
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const month = months[now.getMonth()];
+        const date = now.getDate();
+        const year = now.getFullYear();
+        
+        const dateString = `${month} ${date}, ${year}`;
+        document.getElementById('date').textContent = dateString;
+    }
+
+    window.addEventListener('load', function() {
+        const cpIcon = document.getElementById('cp-icon');
+        const cpiIcon = document.getElementById('cpi-icon');
+        
+        cpIcon.style.cursor = 'pointer';
+        cpiIcon.style.cursor = 'pointer';
+        
+        cpIcon.onclick = function(e) {
+            e.preventDefault();
+            showPopup2();
+        };
+        
+        cpiIcon.onclick = function(e) {
+            e.preventDefault();
+            showPopup2();
+        };
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    });
+</script>
+
+
+
+
+
+
+<style>
+    #cp-icon {
+        position: absolute;
+        right: 925px;
+        bottom: 30px;
+        max-width: 120px;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 1;
+        z-index: 2;
+    }
+
+    #cp-icon:hover {
+        opacity: 0;
+    }
+
+    #cp-icon:hover + #cpi-icon {
+        opacity: 1;
+    }
+
+    #cpi-icon {
+        position: absolute;
+        right: 925px;
+        bottom: 30px;
+        max-width: 120px;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+        z-index: 1;
+    }
+</style>
+
+
+
+
+
+<img id="cp-icon" src="image/CPC.png" alt="CP Icon">
+
+
+<img id="cpi-icon" src="image/CPicon.png" alt="CPI Icon"> 
+
+
+
+
+
+
+
+</style>
+
+<div class="popup-screen" id="popupScreen">
+<div class="popup-content">
+    <span class="close-button" onclick="closePopup()">&times;</span>
+    <!-- Add your popup content here -->
+</div>
+</div>
+    
+
+
+	<audio id="audio1" autoplay>
+		<source src="bratz_theme_songOG.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="audio2">
+		<source src="Bratztheme2.mp3" type="audio/mpeg">
+	</audio>
+	
 
 
 
 </body>
-</html>
+
+
+
+<style>
+    
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 160px;
+        background-color: #1d1d1d;
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+        z-index: -1; /* This puts the footer behind other elements */
+    }
+</style>
+
+<div class="footer">
+    <!-- Footer content can go here -->
+</div>
+
+
+</html>  
