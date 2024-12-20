@@ -1,4 +1,40 @@
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    z-index: -1;
+    animation: fadeInBlack 2s ease-in forwards;
+    animation-delay: 3s; /* Adjust this delay to match when your flicker animation ends */
+}
 
+@keyframes fadeInBlack {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.65;
+    }
+} 
+
+
+#container div {
+    animation: slideAndShrink 1.5s ease-out forwards;
+    animation-delay: 5s; /* Starts after black fade completes */
+}
+
+@keyframes slideAndShrink {
+    from {
+        transform: translateY(0) scale(1);
+    }
+    to {
+        transform: translateY(-40vh) scale(0.5);
+    }
+}
 body 
 {
   height: 100vh;
@@ -18,49 +54,200 @@ body
 	margin: 4 auto;
 	width: 100%;
 	align-items: center;
+    z-index: 2;
 
 
+} 
+
+
+.title-text {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bratz-font-kh';
+    font-size: 40px;
+    color: #f4f989;
+    text-align: center;
+    kerning: 20px;
+    z-index: 1000;
+    text-shadow: 0 0 3px #F2EE9A,
+                 0 0 6px #F2EE9A,
+                 0 0 9px #F2EE9A,
+                 0 0 12px rgba(242, 238, 154, 0.8);
+    animation: glow 2s ease-in-out infinite alternate,
+               fadeIn 1s ease-in forwards;
+    opacity: 0;
+    animation-delay: 6.5s; /* Matches the spotlight animation delay */
 }
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 3px #F2EE9A,
+                     0 0 6px #F2EE9A,
+                     0 0 9px #F2EE9A,
+                     0 0 12px rgba(242, 238, 154, 0.8);
+    }
+    to {
+        text-shadow: 0 0 6px #F2EE9A,
+                     0 0 12px #F2EE9A,
+                     0 0 18px #F2EE9A,
+                     0 0 24px rgba(242, 238, 154, 0.8);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+ .character-menu {
+        opacity: 0;
+        transition: opacity 1s ease-in;
+        pointer-events: none;
+    }
+
+    .character-menu.fade-in {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+
+.speakersR-container {
+    position: fixed;
+    top: 70%;
+    left: 93%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 290px;
+    z-index: 1;
+}
+
+.speakersR-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.speakers-container {
+    position: fixed;
+    top: 70%;
+    left: 7%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 290px;
+    z-index: 1;
+}
+
+.speakers-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.spotlight-container {
+    opacity: 0;
+    animation: fadeInSpotlight 1s ease-in forwards;
+    animation-delay: 6.5s; /* 5s for slideAndShrink + 1.5s buffer */
+}
+
+@keyframes fadeInSpotlight {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.spotlight-container {
+    position: fixed;
+    top: 45.7%;
+    left: 50.05%;
+    transform: translate(-50%, -50%);
+    width: 75%; /* Reduced from 100% to make it smaller */
+    max-width: 715px; /* Reduced from 950px */
+    z-index: 1;
+}
+
+.spotlight-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+
+.frame-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Adjust size as needed */
+    max-width: 950px; /* Prevents image from getting too large */
+    z-index: 1;
+}
+
+
+.frame-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#popout {
+    position: fixed;
+    bottom: 4%;
+    left: 70%;
+    transform: translateX(-50%);
+    z-index: 1; /* Ensure it is above other elements */
+}
+
 
 #base-image {
-	top: 0%;
-	left: 0%;
-	position: fixed;
-	z-index: -1;
-    animation: flicker-animation 1.5s 3;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    animation: flicker 2s linear 1s;
+    opacity: 1;
 }
 
-        @keyframes flicker-animation {
-            0%, 20%, 100% {
-                opacity: 1;
-            }
-            10%, 30% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.5;
-
-            }
-
-#overlay-image {
-    position: fixed; /* This allows the image to be placed on top of the base image */
-  	z-index: 10;
+@keyframes flicker {
+    0% { opacity: 1; }
+    10% { opacity: 0.1; }
+    15% { opacity: 1; }
+    30% { opacity: 0.1; }
+    35% { opacity: 1; }
+    50% { opacity: 0.1; }
+    55% { opacity: 1; }
+    70% { opacity: 0.1; }
+    75% { opacity: 1; }
+}
     
-}    
 
-#audio {
-    
+
+
+@font-face {
+    font-family: 'Bratz-Font-KH';
+    src: url('fonts/Bratz-Font-KH.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-#TITLE
-{
-	font-family: 'funkhouse';
-	font-size: 200px;
-	line-height: 1.6;
-	float: middle;
-	margin: 20px;
-	font-kerning: ;
+#Kareoke {
+    font-family: 'Bratz-Font-KH';
+    font-size: 200px;
+    line-height: 1.6;
+    float: middle;
+    margin: 20px;
+    font-kerning: normal;
 }
+
 
 
 
